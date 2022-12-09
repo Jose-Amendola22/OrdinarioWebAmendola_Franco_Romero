@@ -16,3 +16,24 @@ def listado(request):
     }
 
     return render(request,"listado.html",datos)
+
+def ver_producto(request, id):
+    producto = None
+    existe =  False
+    try:
+        producto = productos.objects.get(id=id)
+        existe = True
+    except:
+        existe = False
+
+    data = {
+
+        "producto":producto,
+
+        "existe":existe,
+
+        "id":id,
+
+    }
+
+    return render(request,"ver_producto.html",data)
