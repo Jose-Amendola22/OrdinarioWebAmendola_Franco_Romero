@@ -20,6 +20,7 @@ class Migration(migrations.Migration):
                 ('precio', models.FloatField()),
                 ('cantidad', models.IntegerField()),
                 ('imagen', models.TextField()),
+                ('descuento', models.FloatField()),
             ],
             options={
                 'db_table': 'productos',

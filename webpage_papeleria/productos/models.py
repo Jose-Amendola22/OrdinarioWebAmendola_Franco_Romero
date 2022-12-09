@@ -21,6 +21,8 @@ class productos(models.Model):
 
     imagen = models.TextField()
 
+    descuento = models.FloatField()
+
    
 
     class Meta:
