@@ -7,9 +7,9 @@
     <title>{% block title %} {% endblock%}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     {% load static %}
-    <link rel="stylesheet" type="text/css"href="{%static 'productos/css/style.css'%}">
+    <link rel="stylesheet" type="text/css" href='{% static "css/style.css" %}'>
 </head>
-<body>
+<body class = "fondo" >
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand/logo -->
         <a class="navbar-brand" href="{% url 'index' %}">
@@ -22,13 +22,19 @@
             <a class="nav-link" href="{%url 'productos:listado'%}">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Carrito de compras</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Compras</a>
+            <a class="nav-link" href="#" img="">Compras</a>
           </li>
         </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#"><img src="https://img.icons8.com/fluency/30/null/buy.png"/><span id="cantprod">0</span></a>
+            </li>
+          </ul>
       </nav>
+
+      <div class=" ">
+        {% block content %} {%endblock%}
+      </div>
 
       
       
@@ -45,6 +51,11 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+
+
+<script src='{% static "js/script.js" %}'></script>
 <style>
     /* Make the image fully responsive */
     .carousel-inner img {

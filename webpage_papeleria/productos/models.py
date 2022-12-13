@@ -23,7 +23,7 @@ class productos(models.Model):
 
     descuento = models.FloatField()
 
-   
+    created_at =  models.DateTimeField(default=timezone.now)
 
     class Meta:
 

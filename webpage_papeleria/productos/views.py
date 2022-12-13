@@ -18,22 +18,23 @@ def listado(request):
     return render(request,"listado.html",datos)
 
 def ver_producto(request, id):
+
     producto = None
     existe =  False
+    estatus =  None
     try:
         producto = productos.objects.get(id=id)
+        if(producto.cantidad > 0):
+            estatus  =  "Stock disponible"
+        else:
+            estatus =  "Agotado"
         existe = True
     except:
         existe = False
-
     data = {
-
         "producto":producto,
-
         "existe":existe,
-
         "id":id,
-
+        "estatus":estatus
     }
-
     return render(request,"ver_producto.html",data)
