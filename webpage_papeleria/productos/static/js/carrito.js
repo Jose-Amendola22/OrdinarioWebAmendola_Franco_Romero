@@ -3,6 +3,7 @@ var precio = document.querySelector("#precio")
 var tot = document.querySelector("#total")
 var totProd = document.querySelector("#cantProd")
 var remove = document.querySelector("#delete")
+var cont = 0
 
 function carritoCompra() {
 
@@ -17,11 +18,13 @@ function carritoCompra() {
 
     
     for(let i=0; i<tventas; i++){
-        remove.innerHTML += '<br><h4><button class="btn btn-danger" onclick="DeleteItem('+i+')" >x</button></h4>'
-        nombre.innerHTML += '<br><h4>'+ venta[i][0]+'</h4>'
-        precio.innerHTML += '<br><h4>'+ venta[i][1]+ '$'+'</h4>'
+        cont ++;
+        remove.innerHTML += '<br><button class="btn btn-danger" onclick="DeleteItem('+i+')" >x</button>'
+        nombre.innerHTML += '<br><input name="nombre" disabled placeholder='+ venta[i][0]+' value='+ venta[i][0]+'></input>'
+        precio.innerHTML += '<br><input name="precio" disabled placeholder='+ venta[i][1]+ '$'+' value='+ venta[i][1]+'></input>'
        
     }
+    totProd.innerHTML= 'Canidad de productos ' + cont
     tot.innerHTML = 'Total: ' + total + ' $';
 
 }
@@ -29,7 +32,6 @@ carritoCompra();
 
 
 function DeleteItem(producto){
-
     var venta = JSON.parse(localStorage.getItem('venta'));
     var total = localStorage.getItem('total'); 
     total = Number(total) - Number(venta[producto][1]);
@@ -41,5 +43,6 @@ function DeleteItem(producto){
     localStorage.setItem('venta', JSON.stringify(venta));
     localStorage.setItem('total', Number(total));
     //actualizar carrito
+    cont --;
     carritoCompra();
 }

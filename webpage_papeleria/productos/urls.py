@@ -10,5 +10,7 @@ urlpatterns = [
     path('listado',views.listado,name='listado'), #url para listar todos los productos
     path('ver_producto/<int:id>',views.ver_producto,name='ver_producto'), #url para listar todos los productos
     path('pedido',views.pedido,name='pedido'),
+    path('guardarPedido',views.guardarPedido,name='guardarPedido'),
+
 
 ]

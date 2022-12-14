@@ -8,7 +8,7 @@
 
 
 <div class="container-fluid  bg-white">
-    
+
     <div class="row">
         <div class="col-md-6 text-center">
             <h1>PEDIDO ACTUAL</h1>
@@ -18,7 +18,7 @@
 
                 </div>
                 <div class="col-md-3" id="precio">
-                    <h3>Precio</h3>
+                    <h3>Precios</h3>
 
                 </div><br><br>
                 <div class="col-md-1" id="delete"> <h3>ELIMINAR</h3>
@@ -28,12 +28,19 @@
             </div>
             <h2 id ="cantProd">Cantidad de productos</h2>
             <h2 id="total">Total</h2>
+            <a href="guardarPedido/venta">
+                <button  type="submit" class="btn btn-primary">Guardar</button>
+            </a>
+
 
         </div>
         
     </div>
 
 </div>
+
+
+
 <script src='{% static "js/carrito.js" %}'></script>
 
 

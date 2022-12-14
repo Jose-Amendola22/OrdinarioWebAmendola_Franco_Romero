@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from productos.models import *
 from django.shortcuts import redirect
+from ventas.models import *
 # Create your views here.
 
 def index(request):
@@ -38,6 +39,16 @@ def ver_producto(request, id):
         "estatus":estatus
     }
     return render(request,"ver_producto.html",data)
+
+def guardarPedido(request):
+    nombre = request.POST.get("nombre")
+    precio = request.POST.get("precio")
+
+    insertVenta = ventas.objects.create(nombre = nombre, precio_unitario = 1, descripcion = "sadsdas", precio_total = precio, cantidad_total = 0 )
+
+    redirect("/productos/listado")
+
+
 
 def pedido(request):
 

@@ -53,6 +53,7 @@ function AgregarProducto(id){
     var venta = JSON.parse(localStorage.getItem('venta'));
     var total = localStorage.getItem('total');
     var tventas = venta.length;
+
     //guardar producto y su total en el local storage
 
     venta[tventas] = [nombre,precio,stock,imagen,descripcion];
@@ -60,9 +61,11 @@ function AgregarProducto(id){
 
     total = Number(total) + Number(precio);
     localStorage.setItem('total',total);
+
     // actualizar el numero de productos en el carrito
     var carrito =  document.querySelector("#cantprod");
     carrito.innerHTML =  venta.length;
+    
     //boton para eliminar elemento agregado
     boton = '<button class="eliminar" onclick="eliminarProducto(' + tventas +')" >Eliminar</button>'
     ptotal.innerHTML = 'Total: ' + total + ' $';
