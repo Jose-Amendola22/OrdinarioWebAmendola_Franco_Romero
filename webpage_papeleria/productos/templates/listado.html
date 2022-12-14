@@ -18,7 +18,12 @@
           <div class="col-md-4 p-4" >
             {% block data %}
             <img class="imagen" src="{{item.imagen}}" >
-            <h3 class="pt-3" id="item{{item.id}}"> {{item.nombre}}</h3>
+            
+            <h3 class="pt-3" id="item{{item.id}}">{{item.nombre}}</h3>
+
+            <h3 hidden class="pt-3" id="itemimg{{item.id}}">{{item.imagen}}</h3>
+
+            <h3 hidden class="pt-3" id="itemDescrip{{item.id}}">{{item.descripcion}}</h3>
             <div class="form-check-inline">
               
               <label class="form-check-label">
@@ -32,15 +37,27 @@
             {% endif %}
             <div hidden class=" ">
                 <input id="itemD{{item.id}}" type="number" value={{item.descuento}} for="" disabled >Descuento de {{item.descuento}} $ </input>
+            </div><br>
+            
+            <div hidden class="">
+              <input class=" bg-warning" id="itemDes{{item.id}}" value={{item.cantidad}} type="number" for=""  min="0" > Stock: {{item.cantidad}} piezas</label>
             </div>
+            {%if item.cantidad > 0%}
             
             <div>
-                <button class="btn btn-dark mt-3" onclick="AgregarProducto('{{item.id}}')">Agregar al carrito</button>
+                <button type="submit"class="btn btn-dark mt-3" onclick="AgregarProducto('{{item.id}}')">Agregar al carrito</button>
             </div>
+            
+            {%endif%}
+            {% if item.cantidad == 0 %}
+            <div>
+              <label for="">Producto sin stock</label>
+            </div>
+            {% endif%}
             {%endblock%}
             <div>
               <a class="btn btn-dark mt-3" href="ver_producto/{{item.id}}">Ver detalles</a>
-          </div>
+            </div>
           </div>
           {% endfor%}
         </div>

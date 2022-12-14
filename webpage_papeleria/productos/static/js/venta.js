@@ -1,17 +1,37 @@
 var orden = document.querySelector("#porden");
 var ptotal = document.querySelector("#ptotal");
 
+
 // funcion para agregar un producto en la venta
 
 function AgregarProducto(id){
 //obtener nombre
     productoID = '#item' + id;
     var nombre = document.querySelector(productoID).innerHTML;
+    console.log(nombre)
+
+//obtener cantidad de productos
+
+    cantidadID = '#itemDes' + id;
+    var stock = document.querySelector(cantidadID).value;
+    console.log(stock);
+
+//obtener descripcion
+
+    descripcionID = '#itemDescrip' + id;
+    var descripcion = document.querySelector(descripcionID).innerHTML;
+    console.log(descripcion);
+    
     
 //obtener descuento
     var descuentID = '#itemD' + id;
     var descuento = document.querySelector(descuentID).value;
     console.log(descuento);
+
+//obtener enlace de imagen
+    imagenID = '#itemimg' + id;
+    var imagen = document.querySelector(imagenID).innerHTML;
+    console.log(imagen)
 
 //obtener precio
 
@@ -27,14 +47,15 @@ function AgregarProducto(id){
     else{
         precio = pri;
     }
-    
+
 
     
     var venta = JSON.parse(localStorage.getItem('venta'));
     var total = localStorage.getItem('total');
     var tventas = venta.length;
     //guardar producto y su total en el local storage
-    venta[tventas] = [nombre,precio];
+
+    venta[tventas] = [nombre,precio,stock,imagen,descripcion];
     localStorage.setItem('venta', JSON.stringify(venta));
 
     total = Number(total) + Number(precio);

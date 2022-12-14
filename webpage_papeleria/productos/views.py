@@ -38,3 +38,7 @@ def ver_producto(request, id):
         "estatus":estatus
     }
     return render(request,"ver_producto.html",data)
+
+def pedido(request):
+
+    return render(request, 'venta.html')

@@ -1,39 +1,40 @@
 {% extends  'plantilla_base.html' %} 
 
-{% block title %}PRODUCTOS {% endblock%}
+{% block title %}Pedido {% endblock%}
 
-<div id="api">
-    <div id="productos">
+{%block content %} 
 
-  
-    </div>
-      <template id="template-producto">
-          <div  class="producto">
-              <figure class="figura">
+{% load static %}
 
-                <figcaption class="titulo-imagen"></figcaption>
-                  <img src="" alt="">
-                  <div  >
-                    <label id="promocion"for=""></label>
-                  </div><br>
-                  <div>
-                  <label id="precio"for=""></label>
-                </div><br>
-                <div>
-                  <label id="preciooferta"for=""></label>
-                </div><br>
-                <div>
-                  <label id="size"for=""></label>
-                </div><br>
-                <div>
-                  <label id="descrip"for=""></label>
-                </div><br>
-                <div class="center">
-                  <button id="butonb" class="btn-producto"></button>
+
+<div class="container-fluid  bg-white">
+    
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <h1>PEDIDO ACTUAL</h1>
+            <div class="row">
+                <div class="col-md-3" id="nombre">
+                    <h3>Nombre</h3>
+
                 </div>
-              </figure>
-          </div>
-      </template>
-  
-  </div>
+                <div class="col-md-3" id="precio">
+                    <h3>Precio</h3>
+
+                </div><br><br>
+                <div class="col-md-1" id="delete"> <h3>ELIMINAR</h3>
+                    
+                </div>
+
+            </div>
+            <h2 id ="cantProd">Cantidad de productos</h2>
+            <h2 id="total">Total</h2>
+
+        </div>
+        
+    </div>
+
 </div>
+<script src='{% static "js/carrito.js" %}'></script>
+
+
+{%endblock%}
