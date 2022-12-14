@@ -46,3 +46,27 @@ function DeleteItem(producto){
     cont --;
     carritoCompra();
 }
+
+function pedido() {
+    var venta = localStorage.getItem('venta');
+    var total = localStorage.getItem('total');
+ 
+ 
+    var orderdata = {};
+    var totalt = {};
+
+    orderdata['venta'] = venta;
+    totalt['total'] = total;
+    
+    //orderdata['test'] = dd;
+    console.log(orderdata)
+    console.log(totalt)
+    $.ajax({
+        url:'pedido',
+        type:"POST",
+        data: orderdata, totalt,
+        success: function(data){
+            console.log("sexo");
+        }
+    })
+}

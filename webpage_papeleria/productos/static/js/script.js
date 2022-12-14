@@ -10,8 +10,8 @@ if(venta === null || venta == undefined){
 }
 
 if(total === null || total == undefined){
-    localStorage.setItem('total', 0);
-    venta = localStorage.getItem('total')
+    localStorage.setItem('total', JSON.stringify());
+    total = localStorage.getItem('total')
 }
 
 var carrito = document.querySelector("#cantprod");

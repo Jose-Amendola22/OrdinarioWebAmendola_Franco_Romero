@@ -5,6 +5,8 @@
 {%block content %} 
 
 {% load static %}
+<body>
+    
 
 
 <div class="container-fluid  bg-white">
@@ -13,34 +15,31 @@
         <div class="col-md-6 text-center">
             <h1>PEDIDO ACTUAL</h1>
             <div class="row">
-                <div class="col-md-3" id="nombre">
+                <div class="col-md-3" id="nombre" name="nombre">
                     <h3>Nombre</h3>
 
                 </div>
-                <div class="col-md-3" id="precio">
+                <div class="col-md-3" id="precio" name="precio">
                     <h3>Precios</h3>
 
                 </div><br><br>
-                <div class="col-md-1" id="delete"> <h3>ELIMINAR</h3>
+                <div class="col-md-1" id="delete" > <h3>ELIMINAR</h3>
                     
                 </div>
 
             </div>
             <h2 id ="cantProd">Cantidad de productos</h2>
             <h2 id="total">Total</h2>
-            <a href="guardarPedido/venta">
-                <button  type="submit" class="btn btn-primary">Guardar</button>
-            </a>
+            <button class="btn btn-success" onclick="pedido()">COMPRAR</button>
+ 
 
 
         </div>
         
     </div>
 
+
 </div>
-
-
-
 <script src='{% static "js/carrito.js" %}'></script>
 
 

@@ -13,8 +13,6 @@ class ventas(models.Model):
 
     nombre = models.CharField(max_length=100)
 
-    descripcion = models.TextField()
-
     precio_unitario = models.FloatField()
 
     precio_total = models.FloatField()

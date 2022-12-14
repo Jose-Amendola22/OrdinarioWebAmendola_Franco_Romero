@@ -114,6 +114,3 @@ function eliminarProducto(producto){
     
 }
 
-function mensaje2() {
-    
-  }
