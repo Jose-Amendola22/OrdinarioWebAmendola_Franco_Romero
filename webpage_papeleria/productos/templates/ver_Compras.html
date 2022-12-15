@@ -1,0 +1,26 @@
+{% extends  'plantilla_base.html' %}
+
+{% block title %}Compras {% endblock%}
+{%block content %}
+{% load static %}
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Costo</th>
+        <th scope="col">Vendido en</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for venta in ventasDB %}
+            <tr>
+                <th scope="col">{{venta.nombre}}</th>
+                <th scope="col">${{venta.costo}}</th>
+                <th scope="col">{{venta.vendido_at}}</th>
+          </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{%endblock%}

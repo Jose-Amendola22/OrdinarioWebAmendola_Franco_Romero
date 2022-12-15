@@ -49,23 +49,20 @@ function DeleteItem(producto){
 
 function pedido() {
     var venta = localStorage.getItem('venta');
-    var total = localStorage.getItem('total');
- 
  
     var orderdata = {};
-    
 
     orderdata['venta'] = venta;
-    
     //orderdata['test'] = dd;
     console.log(orderdata)
-    console.log(totalt)
     $.ajax({
         url:'pedido',
         type:"POST",
-        data: orderdata, totalt,
+        data: orderdata,
         success: function(data){
-            console.log("sexo");
+            localStorage.setItem('venta', JSON.stringify([]));
+            localStorage.setItem('total', 0);
         }
     })
+    
 }
