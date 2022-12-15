@@ -13,11 +13,7 @@ class ventas(models.Model):
 
     nombre = models.CharField(max_length=100)
 
-    precio_unitario = models.FloatField()
-
-    precio_total = models.FloatField()
-
-    cantidad_total = models.IntegerField()
+    costo = models.FloatField()
 
     vendido_at =  models.DateTimeField(default=timezone.now)
 

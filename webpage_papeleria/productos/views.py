@@ -4,6 +4,9 @@ from productos.models import *
 from django.shortcuts import redirect
 from ventas.models import *
 from django.views.decorators.csrf import csrf_exempt
+from tkinter import * 
+from tkinter import messagebox as MessageBox
+import ast
 # Create your views here.
 
 def index(request):
@@ -52,14 +55,33 @@ def guardarPedido(request):
     
 @csrf_exempt
 #lo que hacemos aqui es hacer una peticion por ajax para mandar el data del carrito que esta en el local storage
-def pedido(request):
+def pedido(request): 
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        
-        total = request.POST.get('total')
-        print(total)
         venta = request.POST.get('venta')
-        print(venta)
-    
+        ventaA = ast.literal_eval(venta) #Esta función recibe un string ex: "[["hola"]]" y lo transforma en una lista de lista ex: [[hola]]
+        productosDB  =  productos.objects.all()
+        for i in range(len(ventaA)):
+            for x in productosDB:
+                if(ventaA[i][0] == x.nombre):
+                    if (x.cantidad-1 < 0):
+                        MessageBox.showinfo("No hay stock!")
+                    else:
+                        productosID = productos.objects.get(id=x.id)
+                        productosID.cantidad = productosID.cantidad -  1
+                        insertVenta = ventas.objects.create(nombre = ventaA[i][0], costo= ventaA[i][1])
+                        productosID.save()
+        
     return render (request,"venta.html")
+
+#Función para ver comprar
+def verCompras(request):
+    ventasDB  =  ventas.objects.all()
+    datos = {
+        
+        "ventasDB": ventasDB  
+    }
+    return render(request,"ver_Compras.html",datos)
+
+
 
 
