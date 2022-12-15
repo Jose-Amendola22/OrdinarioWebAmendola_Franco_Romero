@@ -73,7 +73,7 @@ def pedido(request):
                         productosID.save()
         
     
-    return redirect('/productos/pedido')
+    return render(request,"venta.html")
 
 #Función para ver comprar
 def verCompras(request):
