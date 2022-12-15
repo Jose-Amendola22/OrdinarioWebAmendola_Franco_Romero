@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from ventas.models import *
 from django.views.decorators.csrf import csrf_exempt
 from tkinter import * 
+from django import forms
 from tkinter import messagebox as MessageBox
 import ast
 # Create your views here.
@@ -71,7 +72,8 @@ def pedido(request):
                         insertVenta = ventas.objects.create(nombre = ventaA[i][0], costo= ventaA[i][1])
                         productosID.save()
         
-    return render (request,"venta.html")
+    
+    return redirect('/productos/pedido')
 
 #Función para ver comprar
 def verCompras(request):
@@ -102,10 +104,13 @@ def crearProducto(request):
     cantidad = request.POST.get("cantidad")
     imagen = request.POST.get("imagen")
     descuento = request.POST.get("descuento")
+    
 
-    insertProducto = productos.objects.create(nombre = nombre, descripcion = descripcion, precio = int(precio), cantidad = int(cantidad), imagen = imagen, descuento = int(descuento))
+    insertProducto = productos.objects.create(nombre = (nombre), descripcion = str(descripcion), precio = precio, cantidad = int(cantidad), imagen = imagen, descuento = float(descuento))
 
-    return render(request,"crear_producto.html")
+    return redirect('/productos/listadoADM')
+
+    
 
 def ver_productoADM(request, id):
 

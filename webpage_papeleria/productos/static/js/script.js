@@ -10,7 +10,7 @@ if(venta === null || venta == undefined){
 }
 
 if(total === null || total == undefined){
-    localStorage.setItem('total', JSON.stringify());
+    localStorage.setItem('total', 0);
     total = localStorage.getItem('total')
 }
 

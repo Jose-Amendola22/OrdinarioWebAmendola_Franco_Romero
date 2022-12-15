@@ -12,11 +12,12 @@
     
     <div class="row">
       <div class=" col-md-8 text-center" >
-        <h1 class="titulo">Lista de productos</h1><br>
+        <h1 style="background-color: brown; color: white;" class="titulo">LISTA DE PRODUCTOS</h1><br>
         <div class="row text-center">
           {% for item in productosDB %}
           <div class="col-md-4 p-4" >
             {% block data %}
+            <div style="background-color: antiquewhite;">
             <img class="imagen" src="{{item.imagen}}" >
             
             <h3 class="pt-3" id="item{{item.id}}">{{item.nombre}}</h3>
@@ -51,7 +52,7 @@
             {%endif%}
             {% if item.cantidad == 0 %}
             <div>
-              <label for="">Producto sin stock</label>
+              <label style="background-color: goldenrod;"for="">Producto sin stock</label>
             </div>
             {% endif%}
             {%endblock%}
@@ -59,13 +60,14 @@
               <a class="btn btn-dark mt-3" href="ver_producto/{{item.id}}">Ver detalles</a>
             </div>
           </div>
+        </div>
           {% endfor%}
         </div>
 
       </div>
-      <div class="col-md-4 orders ">
+      <div class="col-md-4 orders "><br><br>
         <div class="text-light bg-dark">
-        <h2 class="text-center">Productos agregados</h3>
+        <h2 class="text-center">PRODUCTOS AGREGADOS</h3>
           <ul id="porden"></ul>
         <h3 class="text-right" id="ptotal">Total: 0$</h4>
         </div>

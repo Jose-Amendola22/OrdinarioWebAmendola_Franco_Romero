@@ -21,11 +21,13 @@ function carritoCompra() {
         cont ++;
         remove.innerHTML += '<br><button class="btn btn-danger" onclick="DeleteItem('+i+')" >x</button>'
         nombre.innerHTML += '<br><input name="nombre" disabled placeholder='+ venta[i][0]+' value='+ venta[i][0]+'></input>'
-        precio.innerHTML += '<br><input name="precio" disabled placeholder='+ venta[i][1]+ '$'+' value='+ venta[i][1]+'></input>'
+        precio.innerHTML += '<br><input name="precio" disabled placeholder='+ venta[i][1]+ '$'+' value='+'$'+ venta[i][1]+'></input>'
        
     }
-    totProd.innerHTML= 'Canidad de productos ' + cont
-    tot.innerHTML = 'Total: ' + total + ' $';
+    totProd.innerHTML= 'CANTIDAD DE PRODUCTOS: ' + cont
+    tot.innerHTML = 'TOTAL: '+  ' $'+ total;
+
+    
 
 }
 carritoCompra();
@@ -49,7 +51,7 @@ function DeleteItem(producto){
 
 function pedido() {
     var venta = localStorage.getItem('venta');
- 
+    
     var orderdata = {};
 
     orderdata['venta'] = venta;
@@ -65,4 +67,9 @@ function pedido() {
         }
     })
     
+    Swal.fire({
+        title: 'Venta Realizada',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      })
 }

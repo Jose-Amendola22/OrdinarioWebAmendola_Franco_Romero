@@ -32,7 +32,7 @@
               <a class="nav-link" href="{%url 'productos:pedido'%}"><img src="https://img.icons8.com/fluency/30/null/buy.png"/><span id="cantprod">0</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href=""><img src="https://img.icons8.com/fluency/48/null/admin-settings-male.png"/></a>
+              <a class="nav-link" href="{% url 'productos:listadoADM'%}"><img src="https://img.icons8.com/fluency/48/null/admin-settings-male.png"/></a>
             </li>
           </ul>
 
@@ -40,10 +40,10 @@
 
       <div class=" ">
 
-        {% block content %}
+      {% block content %}
         
         
-        {%endblock%}
+      {%endblock%}
       </div>
 
       
@@ -66,6 +66,8 @@
 
 
 <script src='{% static "js/script.js" %}'></script>
+
+
 <style>
     /* Make the image fully responsive */
     .carousel-inner img {

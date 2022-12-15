@@ -7,11 +7,11 @@
     <title>Administrador</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
-  <body>
+  <body style="background-color: antiquewhite; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 30px;">
 
-    
+    <br><br>
     <div class="container mx-auto">
-      <h1 class="text-center text-success">Productos</h1>
+      <h1   style="font-size: 50px;" class="text-center">LISTA DE PRODUCTOS <img src="https://img.icons8.com/color/94/null/stationery.png"/></h1><br>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -28,19 +28,22 @@
             <tr>
               <td>{{prod.nombre}}</td>
               <td>{{prod.descripcion}}</td>
-              <td>{{prod.precio}}</td>
+              <td>$ {{prod.precio}}</td>
               <td>{{prod.cantidad}}</td>
               <td>{{prod.descuento}}</td>
               <td>
-                <a class="btn btn-link" href="ver_productoADM/{{prod.id}}">Ver Producto</a>
+                <a class="btn btn-success" href="ver_productoADM/{{prod.id}}">Ver Producto</a>
               </td>
               <td>
-                <a class="btn btn-link" href="eliminar_producto/{{prod.id}}">Eliminar</a>
+                <a class="btn btn-danger" href="eliminar_producto/{{prod.id}}">Eliminar</a>
               </td>
             </tr>
           {% endfor %}
         </tbody>
       </table>
+      <div>
+        <a href="formProducto"><button class="btn btn-primary btn-lg" >Agregar Producto</button></a>
+      </div>
     </div>
 
   </body>

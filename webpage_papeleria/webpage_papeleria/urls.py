@@ -18,6 +18,6 @@ from django.urls import path,include
 from productos import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('productos/', include('productos.urls')),
     path('', views.index, name = "index"),
+    path('productos/', include('productos.urls', namespace = 'productos')),
 ]   
