@@ -53,10 +53,9 @@ function pedido() {
  
  
     var orderdata = {};
-    var totalt = {};
+    
 
     orderdata['venta'] = venta;
-    totalt['total'] = total;
     
     //orderdata['test'] = dd;
     console.log(orderdata)
