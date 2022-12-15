@@ -82,6 +82,72 @@ def verCompras(request):
     }
     return render(request,"ver_Compras.html",datos)
 
+def listadoADM (request):
+    productosDB  =  productos.objects.all()
+    datos = {
+        
+        "productosDB": productosDB  
+    }
 
+    return render(request,"listadoADM.html",datos)
+
+
+def formProducto(request):
+    return render(request, "crear_producto.html",{})
+
+def crearProducto(request):
+    nombre = request.POST.get("nombre_producto")
+    descripcion = request.POST.get("descripcion")
+    precio = request.POST.get("precio")
+    cantidad = request.POST.get("cantidad")
+    imagen = request.POST.get("imagen")
+    descuento = request.POST.get("descuento")
+
+    insertProducto = productos.objects.create(nombre = nombre, descripcion = descripcion, precio = int(precio), cantidad = int(cantidad), imagen = imagen, descuento = int(descuento))
+
+    return render(request,"crear_producto.html")
+
+def ver_productoADM(request, id):
+
+    producto = None
+    existe =  False
+    estatus =  None
+    try:
+        producto = productos.objects.get(id=id)
+        if(producto.cantidad > 0):
+            estatus  =  "Stock disponible"
+        else:
+            estatus =  "Agotado"
+        existe = True
+    except:
+        existe = False
+    data = {
+        "producto":producto,
+        "existe":existe,
+        "id":id,
+        "estatus":estatus
+    }
+    return render(request,"ver_productoADM.html",data)
+
+def actualizarProducto(request, id):
+    producto = productos.objects.get(id=id) 
+
+    producto.nombre = request.POST.get("nombre_producto")
+    producto.descripcion = request.POST.get("descripcion")
+    producto.precio = request.POST.get("precio")
+    producto.cantidad = request.POST.get("cantidad")
+    producto.imagen = request.POST.get("imagen")
+    producto.descuento = request.POST.get("descuento")
+
+    producto.save()
+
+    return redirect("/productos/listadoADM")
+
+    
+
+def eliminar_producto(request, id):
+    producto = productos.objects.get(id=id)
+    producto.delete()
+    return redirect("/productos/listadoADM")
 
 
